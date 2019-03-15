@@ -6,6 +6,8 @@ module NewsAggregator
             @url = url
             html = open(url)
             @doc = Nokogiri::HTML(html)
+
+            # will contain news
             @news = []
         end
 
