@@ -5,6 +5,8 @@ module NewsAggregator
     end
 
     def retrieve_news
+      # TODO: check whether the title matches 'Trending' 
+      # instead of hard code the index
       @doc.search('.cZOcBv')[0].parent.search('.drIZFe a span.iNLhyk').each do |li|
         @news.push(
           title: li.text,
