@@ -5,7 +5,10 @@ module NewsAggregator
   def self.start
     news = []
     detik_scraper = DetikScraper.new()
-    news.concat detik_scraper.retrieve_news() # append retrieved news to the all news list
+
+    # append retrieved news to the all news list
+    news.concat detik_scraper.retrieve_news() 
+    
     puts news
   end
 end
