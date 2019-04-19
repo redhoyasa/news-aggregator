@@ -3,11 +3,26 @@ GEM
   specs:
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.3)
+    dotenv (2.7.2)
+    equalizer (0.0.11)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     hashdiff (0.3.8)
+    ice_nine (0.11.2)
+    inflecto (0.0.2)
     mini_portile2 (2.4.0)
+    multipart-post (2.0.0)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
     public_suffix (3.0.3)
@@ -26,7 +41,17 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     safe_yaml (1.0.5)
+    telegram-bot-ruby (0.8.6.1)
+      faraday
+      inflecto
+      virtus
+    thread_safe (0.3.6)
     vcr (4.0.0)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -36,9 +61,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   nokogiri
   rake
   rspec
+  telegram-bot-ruby
   vcr
   webmock
 
