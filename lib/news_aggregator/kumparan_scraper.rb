@@ -10,7 +10,8 @@ module NewsAggregator
       @doc.search('.cZOcBv')[0].parent.search('.drIZFe a span.iNLhyk').each do |li|
         @news.push(
           title: li.text,
-          url: @url + li.parent.parent.parent['href']
+          url: @url + li.parent.parent.parent['href'],
+          flag: "\u{1F1EE 1F1E9}"
         )
       end
       @news

@@ -8,7 +8,8 @@ module NewsAggregator
       @doc.search('#box-pop2 ul li article a').each do |li|
         @news.push(
           title: li.search('h2').text,
-          url: li['href']
+          url: li['href'],
+          flag: "\u{1F1EE 1F1E9}"
         )
       end
       @news
