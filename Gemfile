@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '~> 2.5.0'
 
 gem 'nokogiri'
-gem 'rake'
+gem 'rake', :group => :development
 gem 'telegram-bot-ruby'
 gem 'dotenv'
 
