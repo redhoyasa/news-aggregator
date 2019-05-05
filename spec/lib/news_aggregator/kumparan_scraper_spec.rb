@@ -13,7 +13,7 @@ describe NewsAggregator::KumparanScraper do
         VCR.use_cassette :test_crawl_kumparan do
           news = NewsAggregator::KumparanScraper.new().retrieve_news()
 
-          expect(news.length).to eq(5) # it contains five news
+          expect(news.length).to eq(10) # it contains ten news
         end
       end
     end
