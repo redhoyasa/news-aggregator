@@ -6,6 +6,7 @@ require 'news_aggregator/tirto_scraper'
 require 'news_aggregator/kumparan_scraper'
 require 'news_aggregator/mothership_scraper'
 require 'news_aggregator/cna_scraper'
+require 'news_aggregator/reuters_scraper'
 
 module NewsAggregator
   def self.start
@@ -22,6 +23,7 @@ module NewsAggregator
     kumparan_scraper = KumparanScraper.new()
     mothership_scraper = MothershipScraper.new()
     cna_scraper = CnaScraper.new()
+    reuters_scraper = ReutersScraper.new()
 
     # append retrieved news to the all news list
     news.concat detik_scraper.retrieve_news()[0..0]
@@ -29,6 +31,7 @@ module NewsAggregator
     news.concat kumparan_scraper.retrieve_news()[0..0]
     news.concat mothership_scraper.retrieve_news()[0..0]
     news.concat cna_scraper.retrieve_news()[0..0]
+    news.concat reuters_scraper.retrieve_news()[0..0]
 
     message = message_builder(news)
 
