@@ -29,7 +29,8 @@ jobs:
       - run:
           name: install dependencies for test
           command: |
-            gem install bundler
+            gem update --system
+            bundle update --bundler
             bundle install --without development --path vendor/bundle
 
       - save_cache:
