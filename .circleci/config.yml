@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.5.0
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -27,9 +27,9 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: install dependencies for test
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle install --without development --path vendor/bundle
 
       - save_cache:
           paths:
@@ -37,23 +37,28 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:create
+      # - run: bundle exec rake db:schema:load
 
       # run tests!
+      # - run:
+      #     name: run tests
+      #     command: |
+      #       mkdir /tmp/test-results
+      #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+      #         circleci tests split --split-by=timings)"
+
+      #       bundle exec rspec \
+      #         --format progress \
+      #         --format RspecJunitFormatter \
+      #         --out /tmp/test-results/rspec.xml \
+      #         --format progress \
+      #         $TEST_FILES
       - run:
-          name: run tests
+          name: run test
           command: |
             mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
-
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
+            rspec --out /tmp/test-results/rspec.xml
 
       # collect reports
       - store_test_results:
