@@ -13,7 +13,7 @@ describe NewsAggregator::CnaScraper do
         VCR.use_cassette :test_crawl_cna do
           news = NewsAggregator::CnaScraper.new().retrieve_news()
 
-          expect(news.length).to eq(3) # it contains one news
+          expect(news.length).to eq(1) # it contains one news
         end
       end
     end
