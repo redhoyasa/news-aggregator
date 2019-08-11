@@ -10,4 +10,5 @@ group :test do
   gem 'rspec'
   gem 'vcr', require: false
   gem 'webmock'
+  gem 'rspec_junit_formatter'
 end
