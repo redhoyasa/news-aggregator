@@ -7,7 +7,7 @@ module NewsAggregator
     def retrieve_news
       # TODO: check whether the title matches 'POPULER' 
       # instead of hard code the index
-      @doc.search('.welcome-title')[7].parent.parent.parent.search('.mb-3 a').each do |li|
+      @doc.search('.welcome-title')[8].parent.parent.parent.search('.mb-3 a').each do |li|
         @news.push(
           title: li.text,
           url: @url + li['href'],
