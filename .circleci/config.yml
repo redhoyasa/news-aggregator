@@ -65,6 +65,7 @@ jobs:
 
     steps: 
       # prepare Lambda pkg
+      - checkout
       - run: zip -r seanmctoday.zip lambda.rb lib/
       - run: aws lambda update-function-code --function-name seanmctoday-telegram --zip-file fileb://seanmctoday.zip
 
