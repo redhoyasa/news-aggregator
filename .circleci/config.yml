@@ -56,3 +56,27 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      # prepare Lambda pkg
+      - run: zip -r seanmctoday.zip lambda.rb vendor/ lib/
+      - save_cache:
+          paths:
+            - seanmctoday.zip
+          key: lambda-pkg
+
+  deploy:
+    requires:
+      - build
+    filters:
+      branches:
+        only: master
+
+    docker:
+      - image: wilson208/circleci-awscli
+
+    steps:
+      - restore_cache:
+          keys:
+            - lambda-pkg
+ 
+      - run: aws lambda update-function-code --function-name seanmctoday-telegram --zip-file fileb://seanmctoday.zip
