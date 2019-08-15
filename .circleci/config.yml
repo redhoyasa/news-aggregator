@@ -58,7 +58,7 @@ jobs:
           destination: test-results
 
       # prepare Lambda pkg
-      - run: zip -r seanmctoday.zip lambda.rb vendor/ lib/
+      - run: zip -r seanmctoday.zip lambda.rb lib/
       - save_cache:
           paths:
             - seanmctoday.zip
