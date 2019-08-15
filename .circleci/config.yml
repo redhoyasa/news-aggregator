@@ -65,12 +65,6 @@ jobs:
           key: lambda-pkg
 
   deploy:
-    requires:
-      - build
-    filters:
-      branches:
-        only: master
-
     docker:
       - image: wilson208/circleci-awscli
 
@@ -80,3 +74,15 @@ jobs:
             - lambda-pkg
  
       - run: aws lambda update-function-code --function-name seanmctoday-telegram --zip-file fileb://seanmctoday.zip
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires: 
+            - build
+          filters:
+            branches:
+              only: master
